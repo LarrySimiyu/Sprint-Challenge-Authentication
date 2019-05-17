@@ -3,6 +3,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 
 const configureRoutes = require('../config/routes.js');
+const userRouter = require('../users/user-router.js');
+
 
 const server = express();
 
@@ -11,5 +13,7 @@ server.use(cors());
 server.use(express.json());
 
 configureRoutes(server);
+server.use('/api/users', userRouter);
+
 
 module.exports = server;
